@@ -1,7 +1,10 @@
+import I2C_LCD_driver
 from requests import Request, Session
 import pprint
 import json
 import math
+
+mylcd = I2C_LCD_driver.lcd()
 
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
 parameters = {
@@ -17,5 +20,5 @@ session = Session()
 session.headers.update(headers)
 
 response = session.get(url, params=parameters)
-pprint.pprint(math.floor(json.loads(response.text)[
-              'data']['1']['quote']['USD']['price']))
+mylcd.lcd_display_string(math.floor(json.loads(response.text)[
+                         'data']['1']['quote']['USD']['price']))

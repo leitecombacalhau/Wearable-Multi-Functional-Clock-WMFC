@@ -1,4 +1,7 @@
 import time
+import I2C_LCD_driver
+
+mylcd = I2C_LCD_driver.lcd()
 
 
 def countdown(t):
@@ -6,13 +9,11 @@ def countdown(t):
     while t:
         mins, secs = divmod(t, 60)
         timer = '{:02d}:{:02d}'.format(mins, secs)
-        print(timer, end="\r")
+        mylcd.lcd_display_string(timer, end="\r")
         time.sleep(1)
         t -= 1
 
-    print('Time\'s Up!')
+    mylcd.lcd_display_string('Time\'s Up!')
 
 
-t = input("Enter the time in seconds: ")
-
-countdown(int(t))
+countdown(int(30))
