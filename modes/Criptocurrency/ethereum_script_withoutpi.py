@@ -5,7 +5,7 @@ import math
 
 url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
 parameters = {
-    'slug': 'bitcoin',
+    'slug': 'ethereum',
     'convert': 'USD'
 }
 headers = {
@@ -17,5 +17,5 @@ session = Session()
 session.headers.update(headers)
 
 response = session.get(url, params=parameters)
-pprint.pprint(math.floor(json.loads(response.text)[
-              'data']['1']['quote']['USD']['price']))
+pprint.pprint(str(math.floor(json.loads(response.text)[
+              'data']['1027']['quote']['USD']['price']))+'$')
