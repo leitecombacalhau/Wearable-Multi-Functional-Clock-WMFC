@@ -1,2 +1,2 @@
-# Testing files
-*.test
+# Test files
+/test
